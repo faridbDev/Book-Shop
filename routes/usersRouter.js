@@ -1,5 +1,5 @@
 import express from "express";
-import { registerUserCtrl, loginUserCtrl, getUserProfileCtrl } from "../controllers/usersCtrl.js";
+import { registerUserCtrl, loginUserCtrl, getUserProfileCtrl, updateShippingAddressCtrl } from "../controllers/usersCtrl.js";
 import { isLoggedIn } from "../middlewares/isLoggedIn.js";
 
 
@@ -11,5 +11,6 @@ usersRouter.post("/login", loginUserCtrl);
 
 usersRouter.get("/profile", isLoggedIn, getUserProfileCtrl);
 
+usersRouter.put("/update/shipping", isLoggedIn, updateShippingAddressCtrl);
 
 export default usersRouter;

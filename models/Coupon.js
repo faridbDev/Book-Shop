@@ -34,14 +34,14 @@ const CouponSchema = new Schema(
 );
 
 // Virtuals
-// coupon is Expired
-CouponSchema.virtual("isExpired", get(function() {
+// Coupon Is Expired
+CouponSchema.virtual("isExpired").get(function() {
   return this.endDate < Date.now();
-}));
-// days left
-CouponSchema.virtual("daysLeft", get(function() {
+});
+// Days Left Of Coupon
+CouponSchema.virtual("daysLeft").get(function() {
   return Math.ceil((this.endDate - Date.now()) / (1000 * 60 * 60 * 24));
-}));
+});
 
 // Validations
 CouponSchema.pre("validate", function(next) {

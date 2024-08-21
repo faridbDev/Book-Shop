@@ -61,30 +61,30 @@ const BookSchema = new Schema(
   },
   {
     timestamps: true,
-    // toJSON: { virtuals: true }
+    toJSON: { virtuals: true }
   }
 );
 
-// // Virtuals
-// // QTY left
-// BookSchema.virtual("qtyLeft").get(function() {
-//   return this.totalQty - this?.totalSold;
-// });
-// // Total Reviews
-// BookSchema.virtual("totalReviews").get(function() {
-//   return this?.reviews?.length;
-// });
-// // Average Rating
-// BookSchema.virtual("averageRating").get(function() {
-//   let ratingsTotal = 0;
-//   this.reviews?.forEach((review) => {
-//     ratingsTotal += review?.rating;
-//   });
-//   return Number(ratingsTotal / this.reviews?.length).toFixed(1);
-// });
+// Virtuals
+// QTY left
+BookSchema.virtual("qtyLeft").get(function() {
+  return this.totalQty - this?.totalSold;
+});
+// Total Reviews
+BookSchema.virtual("totalReviews").get(function() {
+  return this?.reviews?.length;
+});
+// Average Rating
+BookSchema.virtual("averageRating").get(function() {
+  let ratingsTotal = 0;
+  this.reviews?.forEach((review) => {
+    ratingsTotal += review?.rating;
+  });
+  return Number(ratingsTotal / this.reviews?.length).toFixed(1);
+});
 
-// // adding virtuals to return object when we use lean()
-// BookSchema.plugin(mongooseLeanVirtuals);
+// adding virtuals to return object when we use lean()
+BookSchema.plugin(mongooseLeanVirtuals);
 
 const Book = mongoose.model("Book", BookSchema);
 

@@ -12,13 +12,7 @@ const CategorySchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "User",
       required: true
-    },
-    Books: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Book"
-      }
-    ]
+    }
   },
   { timestamps: true }
 );
